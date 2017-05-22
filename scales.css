@@ -1,0 +1,332 @@
+
+body, #root, #bodyDiv{
+	/*background: red; */
+	/*background-image: linear-gradient(0deg, #4F364C, #4F364C, #FFFFFF);*/
+	background-image: linear-gradient(0deg, mistyrose, mistyrose, floralwhite);
+	height: 100vh;
+    width: 100%;
+	/*background: -webkit-linear-gradient(red, yellow); /* For Safari 5.1 to 6.0 */
+    /*background: -o-linear-gradient(red, yellow); /* For Opera 11.1 to 12.0 */
+    /*background: -moz-linear-gradient(red, yellow); /* For Firefox 3.6 to 15 */
+    /*background: linear-gradient(red, yellow); /* Standard syntax */
+	
+}
+
+.scalesGridContainer{
+	height:50%;
+	border:none;
+	background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    border: medium none;
+    height: 50%;
+}
+.scalesContainer{
+}
+
+.scaleRow{
+	background-color:#7789af;
+}
+
+.scaleRow div{
+	border-radius: 50%;
+	border: 4px solid floralwhite;
+	padding:15px;
+	background-color:inherit;
+}
+.scaleRow div::before{
+	content: "";
+	display: block;
+	padding-top: 100%; 	
+}
+
+.scaleCell, .scaleCell div{
+	position:  absolute;
+	top: 17px;
+	left: 17px;
+	bottom: 17px;
+	right: 17px;
+	
+}
+
+.scaleCol{
+	box-shadow: 0 -5px 15px -5px #333;
+		-webkit-transform: translate(0, 0);
+ -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+   -o-transform: translate(0, 0);
+	  transform: translate(0, 0);
+	/*
+	   -webkit-transform: translate(0, 0);
+     -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+       -o-transform: translate(0, 0);
+          transform: translate(0, 0);
+	-webkit-transition: transform 1s ease-out;
+	 -moz-transition: transform 1s ease-out;
+	   -o-transition: transform 1s ease-out;
+		  transition: transform 1s ease-out;*/
+}
+
+.scaleCol1.scaleColScrollDown, .scaleCol6.scaleColScrollUp{
+	-webkit-transition: transform 1s ease-out;
+	 -moz-transition: transform 1s ease-out;
+	   -o-transition: transform 1s ease-out;
+		  transition: transform 1s ease-out;
+	-webkit-transition-delay: 0s; /* Safari */
+		    transition-delay: 0s;
+}
+.scaleCol2.scaleColScrollDown, .scaleCol5.scaleColScrollUp{
+	-webkit-transition: transform 0.8s ease-out;
+	 -moz-transition: transform 0.8s ease-out;
+	   -o-transition: transform 0.8s ease-out;
+		  transition: transform 0.8s ease-out;
+		  -webkit-transition-delay: 0.1s; /* Safari */
+		    transition-delay: 0.1s;
+}
+.scaleCol3.scaleColScrollDown, .scaleCol4.scaleColScrollUp{
+	-webkit-transition: transform 0.7s ease-out;
+	 -moz-transition: transform 0.7s ease-out;
+	   -o-transition: transform 0.7s ease-out;
+		  transition: transform 0.7s ease-out;
+		  -webkit-transition-delay: 0.2s;
+		    transition-delay: 0.2s;
+}
+.scaleCol4.scaleColScrollDown, .scaleCol3.scaleColScrollUp{
+	-webkit-transition: transform 0.5s ease-out;
+	 -moz-transition: transform 0.5s ease-out;
+	   -o-transition: transform 0.5s ease-out;
+		  transition: transform 0.5s ease-out;
+		  -webkit-transition-delay: 0.3s;
+		    transition-delay: 0.3s;
+}
+.scaleCol5.scaleColScrollDown, .scaleCol2.scaleColScrollUp{
+	-webkit-transition: transform 0.4s ease-out;
+	 -moz-transition: transform 0.4s ease-out;
+	   -o-transition: transform 0.4s ease-out;
+		  transition: transform 0.4s ease-out;
+		  -webkit-transition-delay: 0.4s;
+		    transition-delay: 0.4s;
+}
+.scaleCol6.scaleColScrollDown, .scaleCol1.scaleColScrollUp{
+	-webkit-transition: transform 0.2s ease-out;
+	 -moz-transition: transform 0.2s ease-out;
+	   -o-transition: transform 0.2s ease-out;
+		  transition: transform 0.2s ease-out;
+		    -webkit-transition-delay: 0.5s;
+		    transition-delay: 0.5s;
+}
+
+.scaleColScrollDown {
+	 -webkit-transform: translate(0, 130%);
+	 -moz-transform: translate(0, 130%);
+	  -ms-transform: translate(0, 130%);
+	   -o-transform: translate(0, 130%);
+		  transform: translate(0, 130%);
+}
+
+.scaleCol:hover{
+	/* Make a bobbing animation*/
+	border:2px solid white;
+	cursor:pointer;
+}
+
+/*Wave colours*/
+.scaleRow .bgAqua{
+	background-color:#162d61;
+	border-color:#d5f5fd;
+}
+.scaleRow .bgAqua > div , .scaleRow .bgAqua > div > div {
+	background-color:#285aa3;
+	border-color:#d5f5fd;
+}
+.scaleRow .bgAqua > div > div > div, .scaleRow .bgAqua > div > div > div > div {
+	background-color:#4c9fd5;
+	/*border-color:#1979b8;*/
+	border-color:#d5f5fd;
+}
+.scaleRow .bgAqua > div > div > div > div > div , .scaleRow .bgAqua > div > div > div > div > div > div  {
+	background-color:#98e9fe;
+	/*border-color:#5ad1f0;*/
+	border-color:#d5f5fd;
+}
+
+.scaleRow .bgBlush{
+	background-color:#C17C8F;
+	/*border-color:#041a4b;*/
+	border-color:#faf2f3;
+}
+.scaleRow .bgBlush > div , .scaleRow .bgBlush > div > div {
+	background-color:#DEA5B4;
+	/*border-color:#053b8a;*/
+	border-color:#faf2f3;
+}
+.scaleRow .bgBlush > div > div > div, .scaleRow .bgBlush > div > div > div > div {
+	background-color:#F0CAD5;
+	/*border-color:#1979b8;*/
+	border-color:#faf2f3;
+}
+.scaleRow .bgBlush > div > div > div > div > div , .scaleRow .bgBlush > div > div > div > div > div > div  {
+	background-color:#F6DFE7;
+	/*border-color:#5ad1f0;*/
+	border-color:#faf2f3;
+}
+
+.scaleRow .bgGrey{
+	background-color:#454358;
+	/*border-color:#37344b;*/
+	border-color:#eceef2;
+}
+.scaleRow .bgGrey > div , .scaleRow .bgGrey > div > div {
+	background-color:#74849b;
+	/*border-color:#60738e;*/
+	border-color:#eceef2;
+}
+.scaleRow .bgGrey > div > div > div, .scaleRow .bgGrey > div > div > div > div {
+	background-color:#a9bcc2;
+	/*border-color:#91abb3;*/
+	border-color:#eceef2;
+}
+.scaleRow .bgGrey > div > div > div > div > div , .scaleRow .bgGrey > div > div > div > div > div > div {
+	background-color:#ccd0db;
+	/*border-color:#b0b8ce;*/
+	border-color:#eceef2;
+}
+
+.scaleRow > div{
+	background-color:#073e41;
+	/*border-color:#012d2f;*/
+	border-color:#d3f3f3;
+}
+.scaleRow > div > div, .scaleRow > div > div > div {
+	background-color:#2b7574;
+	/*border-color:#135d5c;*/
+	border-color:#d3f3f3;
+}
+.scaleRow > div > div > div > div, .scaleRow > div > div > div > div > div  {
+	background-color:#17a6a2;
+	/*border-color:#02928e;*/
+	border-color:#d3f3f3;
+}
+.scaleRow > div > div > div > div > div > div, .scaleRow > div > div > div > div > div  > div > div {
+	background-color:#82c6c7;
+	/*border-color:#61b3b4;*/
+	border-color:#d3f3f3;
+}
+
+.overlap>div{
+	margin-top:-12.8%;
+}
+
+div.scaleCellRightHalf, .scaleCellRightHalf div{
+	border-top-left-radius: 180%;
+	border-top-right-radius: 0;
+	right:-9px;
+	/*margin-right:1%; overlappingcircles*/
+}
+div.scaleCellLeftHalf, div.scaleCellLeftHalf div{
+	border-top-right-radius: 180%;
+	border-top-left-radius: 0;
+	left:-9px;
+	/*margin-left:1%; overlappingcircles*/
+}
+
+div.scaleCellLeftHalf::before, 
+div.scaleCellRightHalf::before {
+    padding-top: 200%;
+}
+
+.scaleCellLeftHalf + div{
+	/*margin-left: -1.5%; overlappingcircles*/
+}
+
+.scaleRow .scaleCol .scaleBubble{
+    position: absolute;
+    /*right: 24%;
+    top: 15%;*/
+    border: none;
+    background-color: #e7e3dc;
+	padding:0;
+}
+
+.shortcutSpan .shortcutDiv{
+	background-repeat: no-repeat;
+    background-size: cover;
+    border: medium none;
+    padding: 0;
+    position: absolute;
+	background-color: rgba(0, 0, 0, 0);
+}
+#shortcutPacmanDiv{
+	background-image:url("assets/waves/pacman_3d.png");
+	right: 45%;
+    top: 25%;
+    transform: rotate(-40deg);
+    width: 80px;
+}
+#shortcutPacmanLink:hover, #shortcutCupcakeLink:hover{
+	border:1px solid white;
+	cursor:pointer;
+	background-color:rgba(255,255,255, 0.5);
+}
+#shortcutPacmanLink:active, #shortcutCupcakeLink:active{
+	border:2px solid blue;
+	background-color:rgba(0,0,255, 0.5);
+}
+#shortcutPacmanLink{
+	border-radius: 50%;
+    height: 80px;
+    position: absolute;
+    right: 45%;
+    top: 25%;
+    width: 80px;
+    z-index: 1000;
+}
+#shortcutCupcakeDiv{
+	background-image:url("assets/waves/cupcake.png");
+    right: 22%;
+    top: 11%;
+    width: 120px;
+	transform: rotate(-10deg);
+}
+#shortcutChickenDrumstickDiv {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("assets/waves/chickendrumstick.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: medium none;
+    border-radius: 0;
+    padding: 0;
+    position: absolute;
+    right: 22%;
+    top: 11%;
+    transform: rotate(109deg);
+    width: 110px;
+}
+#shortcutCupcakeLink{
+	border-radius: 50%;
+    height: 120px;
+    position: absolute;
+	right: 22%;
+    top: 11%;
+    width: 120px;
+    z-index: 1000;
+}
+.pacman-modal > .modal-content{
+	background-color: rgba(0,0,0,0.5);
+}
+.pacman-modal {
+	width:455px;
+}	
+.pacman-modal .modal-footer{
+	border:none;
+}
+.pacman-modal .modal-header{
+	border:none;
+	padding-bottom:0px;
+}
+.pacman-modal .modal-body{
+	height:500px;
+}
+.pacman-modal .close{
+	color:#fff;
+}
