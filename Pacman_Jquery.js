@@ -1,4 +1,4 @@
-
+	
 	var $ = require ('jquery');
 
 	//// GLOHAL CONSTANTS
@@ -51,7 +51,7 @@
 	
 	//// GLOBAL VARIABLES
 	var gameIsRunning = false;
-	var gameIsPaused = false;
+	window.gameIsPaused = false;
     var gCurrentMoveInterval = 0;
 	var gEvasiveGhostTimeout;
     var gBlinkingGhostTimeout;
@@ -389,13 +389,13 @@ export function removeJqueryPacmanEventListeners(){
 	document.removeEventListener('keydown', handleKeyDown);
 }
 
-export function kickStartJqueryPacmanGameWithBehaviour(behaviour, ghostColour){
-	// Set focus back to game map
-	document.getElementById('ghost-dropdown-0').blur();
-	document.getElementById('mapDiv').focus();
-	
+export function kickStartJqueryPacmanGameWithBehaviour(behaviours){
 	kickStartJqueryPacmanGame();
-	sprites['ghost'+ghostColour.toLowerCase()].huntBehaviour = behaviour;
+	
+	sprites['ghostred'].behaviour = behaviours[0].toLowerCase();
+	sprites['ghostpink'].behaviour = behaviours[1].toLowerCase();
+	sprites['ghostblue'].behaviour = behaviours[2].toLowerCase();
+	sprites['ghostorange'].behaviour = behaviours[3].toLowerCase();
 }
 
 if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur();} 
@@ -407,8 +407,8 @@ function attachKeydown(){
 function handleKeyDown(event){
 	// ## This block is clunky simplify it!
 	// As soon as player hits a key the game starts
-	if (gameIsPaused){
-		gameIsPaused = false;
+	if (window.gameIsPaused){
+		window.gameIsPaused = false;
 		gameIsRunning = true;
 		
 		for (var i=0; i<gGhostsOutOfHouse.length; i++){
@@ -1194,7 +1194,7 @@ function handleKeyDown(event){
 		gameIsRunning = false;
 		sprites.pacman.isMoving = false;
 		
-		if (!gameIsPaused){
+		if (!window.gameIsPaused){
 			document.removeEventListener('keydown', handleKeyDown);
 		}
 		document.removeEventListener('click', pauseGame);
@@ -1433,7 +1433,7 @@ function attachClick(){
 
 function pauseGame(){
 	if (gameIsRunning){
-		gameIsPaused = true;
+		window.gameIsPaused = true;
 		stopGame();
 		setReadyText('&nbsp; PAUSE');
 	}

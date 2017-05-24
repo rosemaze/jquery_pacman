@@ -44,20 +44,32 @@ class App extends Component {
 		super(props);
 		
 		this.state = ({
+			showPacmanModal: false,
 			rowX1 : 0,
 			rowX2 : 0,
 			rowX3 : 0,
 			rowX4 : 0,
 			rowX5 : 0,
-			scrollClass : ''
+			scrollClass : '',
 		});
 		
+		this.handleNavSelect = this.handleNavSelect.bind(this);
+		this.handlePacmanClick = this.handlePacmanClick.bind(this);
 		this.handleScroll = this.handleScroll.bind(this);
 	}
 	componentDidMount(){
 		window.addEventListener("wheel", this.handleScroll);
 	}
-	
+	handleNavSelect(selectedKey){
+		switch (selectedKey){
+			case 1:
+				this.setState({showPacmanModal: true});
+				break;
+		}
+	}
+	handlePacmanClick(e){
+		this.setState({showPacmanModal: true});
+	}
 	handleScroll(event){
 		// ## We only want the sign from deltaY 
 		if (event.deltaY > 0){
@@ -66,71 +78,100 @@ class App extends Component {
 			this.setState({scrollClass : " scaleColScrollUp"});
 		}
 	}
-  render() {
-    return (
-		<div id='bodyDiv'>
-		<MyNavBar/>
-		<ScrollWrapper onWindowScroll={this.handleScroll}>
-			<nav className="scalesGridContainer navbar navbar-inverse navbar-fixed-bottom">
-				<Grid fluid={true} className="scalesContainer">
-					<Row id="row1" className="show-grid" bsClass="scaleRow">
-					  <Col xs={4} md={2} className={"scaleCol scaleCol1 bgGrey"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} className={"scaleCol scaleCol1"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} className={"scaleCol scaleCol1"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol1 bgGrey"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol1 bgBlush"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol1 bgAqua"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
-					</Row>
-					<Row id="row2" className="show-grid" bsClass="scaleRow altColour overlap">
-					  <Col xs={2} md={1} className={"scaleCellLeftHalf scaleCol2"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
-					  <Col xs={4} md={2} className={"scaleCol scaleCol2 bgGrey"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} className={"scaleCol scaleCol2 bgGrey"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><ShortcutPacman/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol2"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol2"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol2 bgBlush"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
-					  <Col xs={2} md={1} className={"scaleCellRightHalf scaleCol2"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
-					</Row>
-					<Row className="show-grid" bsClass="scaleRow overlap">
-					  <Col xs={4} md={2} className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} className={"scaleCol bgAqua scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
-					</Row>
-					<Row className="show-grid" bsClass="scaleRow altColour overlap">
-					  <Col xs={2} md={1} className={"scaleCellLeftHalf scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
-					  <Col xs={4} md={2} className={"scaleCol bgAqua scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} className={"scaleCol bgAqua scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgGrey scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><ShortcutCupcake/><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
-					  <Col xs={2} md={1} className={"scaleCellRightHalf scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
-					</Row>
-					<Row className="show-grid" bsClass="scaleRow overlap">
-					  <Col xs={4} md={2} className={"scaleCol scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} className={"scaleCol bgAqua scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
-					  <Col xs={4} md={2} className={"scaleCol scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgGrey scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
-					</Row>
-					<Row className="show-grid" bsClass="scaleRow altColour overlap">
-					  <Col xs={2} md={1} className={"scaleCellLeftHalf scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
-					  <Col xs={4} md={2} className={"scaleCol scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
-					  <Col xs={4} md={2} className={"scaleCol bgAqua scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgAqua scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgBlush scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/>><Bubble/></Col>
-					  <Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgGrey scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
-					  <Col xs={2} md={1} className={"scaleCellRightHalf scaleCol6"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
-					</Row>
-					
-				</Grid>
-			</nav>
-		</ScrollWrapper>
-		</div>
-    );
-  }
+	
+	render() {
+		return (
+			<div id='bodyDiv'>
+				<Navbar inverse collapseOnSelect>
+					<Navbar.Header>
+						<Navbar.Brand>
+							<a href="#">Maze Portfolio</a>
+						</Navbar.Brand>
+						<Navbar.Toggle />
+					</Navbar.Header>
+					<Navbar.Collapse>
+						<Nav onSelect={this.handleNavSelect}>
+							<NavItem eventKey={1} href="#">pacman</NavItem>
+							<NavDropdown eventKey={3} title="Technology" id="basic-nav-dropdown">
+							<MenuItem eventKey={3.1}>Javascript</MenuItem>
+							<MenuItem eventKey={3.2}>HTML</MenuItem>
+							<MenuItem eventKey={3.3}>CSS</MenuItem>
+							<MenuItem divider />
+							<MenuItem eventKey={3.3}>Node.js</MenuItem>
+							<MenuItem eventKey={3.3}>React</MenuItem>
+							<MenuItem eventKey={3.3}>jQuery</MenuItem>
+							</NavDropdown>
+						</Nav>
+						<Nav pullRight>
+							<NavItem eventKey={1} href="#">lam.meisze@gmail.com</NavItem>
+						</Nav>
+					</Navbar.Collapse>
+				</Navbar>
+				
+				<DialogPacman show={this.state.showPacmanModal} />
+				
+				<ScrollWrapper onWindowScroll={this.handleScroll}>
+					<nav className="scalesGridContainer navbar navbar-inverse navbar-fixed-bottom">
+						<Grid fluid={true} className="scalesContainer">
+							<Row id="row1" className="show-grid" bsClass="scaleRow">
+								<Col xs={4} md={2} className={"scaleCol scaleCol1 bgGrey"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} className={"scaleCol scaleCol1"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} className={"scaleCol scaleCol1"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol1 bgGrey"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol1 bgBlush"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol1 bgAqua"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
+							</Row>
+							<Row id="row2" className="show-grid" bsClass="scaleRow altColour overlap">
+								<Col xs={2} md={1} className={"scaleCellLeftHalf scaleCol2"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
+								<Col xs={4} md={2} className={"scaleCol scaleCol2 bgGrey"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} className={"scaleCol scaleCol2 bgGrey"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><ShortcutPacman onUserClick={this.handlePacmanClick}/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol2"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol2"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol2 bgBlush"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
+								<Col xs={2} md={1} className={"scaleCellRightHalf scaleCol2"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
+							</Row>
+							<Row className="show-grid" bsClass="scaleRow overlap">
+								<Col xs={4} md={2} className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} className={"scaleCol bgAqua scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol3"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
+							</Row>
+							<Row className="show-grid" bsClass="scaleRow altColour overlap">
+								<Col xs={2} md={1} className={"scaleCellLeftHalf scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
+								<Col xs={4} md={2} className={"scaleCol bgAqua scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} className={"scaleCol bgAqua scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgGrey scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><ShortcutCupcake/><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
+								<Col xs={2} md={1} className={"scaleCellRightHalf scaleCol4"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
+							</Row>
+							<Row className="show-grid" bsClass="scaleRow overlap">
+								<Col xs={4} md={2} className={"scaleCol scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} className={"scaleCol bgAqua scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
+								<Col xs={4} md={2} className={"scaleCol scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgGrey scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol scaleCol5"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div><div></div></div></div></div></div></div></div></Col>
+							</Row>
+							<Row className="show-grid" bsClass="scaleRow altColour overlap">
+								<Col xs={2} md={1} className={"scaleCellLeftHalf scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
+								<Col xs={4} md={2} className={"scaleCol scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
+								<Col xs={4} md={2} className={"scaleCol bgAqua scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgAqua scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgBlush scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/>><Bubble/></Col>
+								<Col xs={4} md={2} xsHidden smHidden className={"scaleCol bgGrey scaleCol6"+this.state.scrollClass}><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div><Bubble/><Bubble/><Bubble/></Col>
+								<Col xs={2} md={1} className={"scaleCellRightHalf scaleCol6"+this.state.scrollClass} ><div className="scaleCell"><div><div><div><div><div></div></div></div></div></div></div></Col>
+							</Row>
+						</Grid>
+					</nav>
+				</ScrollWrapper>
+			
+			
+			</div>
+		);
+	}
 }
 
 class Bubble extends Component{
@@ -213,22 +254,16 @@ class ShortcutPacman extends Component{
 	constructor(props){
 		super(props);
 		
-		this.state = ({ show: false });
-		
-		this.openModal = this.openModal.bind(this);
+		this.onClick = this.onClick.bind(this);
 	}
-	openModal() {
-		this.setState({ show: true });
+	onClick(e){
+		this.props.onUserClick(e);
 	}
 	render(){
-		return <span onClick={this.openModal} className='shortcutSpan'>
+		return <span className='shortcutSpan' onClick={this.onClick}>
 					<a id='shortcutPacmanLink'>
 					</a><div id='shortcutPacmanDiv' className='shortcutDiv'></div>
-					<DialogPacman show={this.state.show} />
 			   </span>;
-			   
-			  
-			   
 	}
 }
 
@@ -237,14 +272,13 @@ class ShortcutCupcake extends Component{
 		super(props);
 		
 		this.state = ({ show: false });
-		
-		this.openModal = this.openModal.bind(this);
 	}
+	/*
 	openModal() {
 		this.setState({ show: true });
-	}
+	}*/
 	render(){
-		return <span onClick={this.openModal} className='shortcutSpan'>
+		return <span className='shortcutSpan'>
 					<a id='shortcutCupcakeLink'>
 					</a><div id='shortcutCupcakeDiv' className='shortcutDiv'></div>
 					<DialogPacman show={this.state.show} />
@@ -288,35 +322,4 @@ class DialogPacman extends Component{
 	}
 }
 
-class MyNavBar extends Component{
-	render(){
-		return(
-			<Navbar inverse collapseOnSelect>
-				<Navbar.Header>
-				  <Navbar.Brand>
-					<a href="#">Maze Portfolio</a>
-				  </Navbar.Brand>
-				  <Navbar.Toggle />
-				</Navbar.Header>
-				<Navbar.Collapse>
-				  <Nav>
-					<NavItem eventKey={1} href="#">pacman</NavItem>
-					<NavItem eventKey={2} href="#">recipes</NavItem>
-					<NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-					  <MenuItem eventKey={3.1}>Action</MenuItem>
-					  <MenuItem eventKey={3.2}>Another action</MenuItem>
-					  <MenuItem eventKey={3.3}>Something else here</MenuItem>
-					  <MenuItem divider />
-					  <MenuItem eventKey={3.3}>Separated link</MenuItem>
-					</NavDropdown>
-				  </Nav>
-				  <Nav pullRight>
-					<NavItem eventKey={1} href="#">Link Right</NavItem>
-					<NavItem eventKey={2} href="#">Link Right</NavItem>
-				  </Nav>
-				</Navbar.Collapse>
-			</Navbar>
-		)
-	}
-}
 export default App;

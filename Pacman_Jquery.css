@@ -285,9 +285,9 @@
 .confirmDiv{
 	background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
     color: white;
-    height: 100%;
+    height: 509px;
     position: absolute;
-    width: 100%;
+    width: 420px;
     z-index: 2000;
 }
 .confirmDivMessage{
@@ -315,25 +315,45 @@
 	top:0px;
 	background-color:white;
 }
-.btn-ghostRed{
-    background-color: #ff0000;
-    border-color: #d30202;
+.btn-group .btn-ghostRed{
+    /*background-color: #ff0000;
+    border-color: #d30202;*/
+	color:red;
 }
-.btn-ghostPink{
-    background-color: #e88dd8;
-    border-color: #a55194;
+.btn-group .btn-ghostPink{
+    /*background-color: pink;
+    border-color: #a55194;*/
+	color:pink;
 }
-.btn-ghostBlue{
-    background-color: #37d5dd;
-    border-color: #26a1a5;
+.btn-group .btn-ghostBlue{
+    /*background-color: #5edce0;
+	border-color: #288596;*/
+	color: #5edce0;
 }
-.btn-ghostOrange{
-    background-color: #f28f26;
-    border-color: #894602;
+.btn-group .btn-ghostOrange{
+    /*background-color: #f49b42;
+    border-color: #894602;*/
+	color:#f7b967;
 }
 .btn-group .ghostGeneric{
-	color: #fff;
+	/*color: #fff;*/
 	width: 102px !important;
+	background-color:black;
+}
+.btn-group .ghostGeneric:hover{
+	color: #fff;
+}
+.btn-ghostRed .caret{
+	color:red;
+}
+.btn-ghostPink .caret{
+	color:pink;
+}
+.btn-ghostBlue .caret{
+	color:#5edce0;
+}
+.btn-ghostOrange .caret{
+	color:#f49b42;
 }
 .dropdown-menu{
 	z-index:3000;
@@ -350,10 +370,9 @@
     width: 100%;
 }
 .ghostButtonContainer{
-	margin-left:3px;
 	width: 102px !important;
-	margin-top: 7px;
 	float:left;
+	margin: 7px 0px 5px 3px;
 }
 .ghostButtonContainer:first-child{
 	margin-left:0px;
@@ -365,13 +384,13 @@
     background-image: linear-gradient(to bottom, #ff0000 0px, #ff0000 100%);
 }
 .btn-group-ghostBlue > .dropdown-menu > .active > a {
-    background-image: linear-gradient(to bottom, #37d5dd 0px, #37d5dd 100%);
+    background-image: linear-gradient(to bottom, #5edce0 0px, #5edce0 100%);
 }
 .btn-group-ghostPink > .dropdown-menu > .active > a {
-    background-image: linear-gradient(to bottom, #e88dd8 0px, #e88dd8 100%);
+    background-image: linear-gradient(to bottom, pink 0px, pink 100%);
 }
 .btn-group-ghostOrange > .dropdown-menu > .active > a {
-    background-image: linear-gradient(to bottom, #f28f26 0px, #f28f26 100%);
+    background-image: linear-gradient(to bottom, #f49b42 0px, #f49b42 100%);
 }
 .dropdown-menu {
 	background:rgba(0,0,0,0.8);
