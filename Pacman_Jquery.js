@@ -1324,6 +1324,18 @@ function setGhostDivScore(ghostId, score){
 function setReadyText(text){
 	 var readyText = (text) ? text : 'READY !';
 	 
+	 var captionElement = document.getElementById('dotDiv_175px_250px');
+	 captionElement.innerHTML = readyText; 
+	 captionElement.style.width = "89px";
+	 captionElement.setAttribute("title","Press arrow keys to resume game");
+	 captionElement.className = "readyDiv";
+
+	 document.getElementById('dotDiv_190px_250px').style.width = "0px";
+	 document.getElementById('dotDiv_205px_250px').style.width = "0px";
+	 document.getElementById('dotDiv_220px_250px').style.width = "0px";
+	 document.getElementById('dotDiv_235px_250px').style.width = "0px";
+	 
+	 /*
 	 $('#dotDiv_175px_250px').html(readyText); 
 	 $('#dotDiv_175px_250px').addClass("readyDiv");
 	 $('#dotDiv_175px_250px').css('width', '89px');
@@ -1331,6 +1343,7 @@ function setReadyText(text){
 	 $('#dotDiv_205px_250px').css('width', '0px');
 	 $('#dotDiv_220px_250px').css('width', '0px');
 	 $('#dotDiv_235px_250px').css('width', '0px');
+	 */
 }
 
 function hideReadyText(){
@@ -1340,6 +1353,11 @@ function hideReadyText(){
 	 $('#dotDiv_205px_250px').css('width', '15px');
 	 $('#dotDiv_220px_250px').css('width', '15px');
 	 $('#dotDiv_235px_250px').css('width', '15px');
+}
+
+function setFruitDiv(){
+	var fruitDiv = document.getElementById('dotDiv_175px_250px');
+	fruitDiv.addClass('cherry');
 }
 
 

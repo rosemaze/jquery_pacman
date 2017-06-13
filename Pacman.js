@@ -133,7 +133,7 @@ class GhostButton extends Component{
 					<MenuItem eventKey="Fickle" disabled >Fickle</MenuItem>
 					<MenuItem eventKey="Sneaky" disabled >Sneaky</MenuItem>
 					<MenuItem divider />
-					<MenuItem eventKey="Random" active>Random</MenuItem>
+					<MenuItem eventKey="Random" active={true}>Random</MenuItem>
 				</DropdownButton>
 			</div>
 		);

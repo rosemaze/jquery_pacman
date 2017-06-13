@@ -278,6 +278,9 @@
 	left:157px;
 	z-index:1000;
 }
+.cherry{
+	
+}
 #gameMapContainer{
 	clear:both;
 	position:relative;
@@ -390,7 +393,7 @@
     background-image: linear-gradient(to bottom, pink 0px, pink 100%);
 }
 .btn-group-ghostOrange > .dropdown-menu > .active > a {
-    background-image: linear-gradient(to bottom, #f49b42 0px, #f49b42 100%);
+    background-image: linear-gradient(to bottom, orange 0px, orange 100%);
 }
 .dropdown-menu {
 	background:rgba(0,0,0,0.8);
